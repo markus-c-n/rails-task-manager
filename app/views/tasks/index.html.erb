@@ -1,0 +1,27 @@
+<div class="text-center">
+  <h1>Task manager</h1>
+  <h2>The place top manage all to-do's</h2>
+</div>
+
+<div class="card mt-5" style="width: 400px;">
+<h3 class="mt-3 ms-5 mb-0">Your tasks:</h3>
+  <ol class="mt-1">
+    <% @tasks.each do |task| %>
+      <div class="card m-2"  style="width: 200px;">
+        <div class="card-body p-3">
+        <% if task.completed %>
+        <i class="fa-regular fa-square-check"></i>
+        <% else %>
+        <i class="fa-regular fa-square"></i>
+        <% end %>
+          <%#= task.completed ? '[x]' : '[]' %>
+          <%= link_to "#{task.title}", task_path(task),  style: "text-decoration: none;"%>
+        </div>
+      </div>
+    <% end %>
+  </ol>
+</div>
+
+<div class="mx-auto mt-3">
+<%= link_to "Add task", new_task_path, class: 'btn btn-light' %>
+</div>
